@@ -28,7 +28,7 @@ spec:
   dependsOn:
     - name: apps-default-cnpg-operator
     - name: apps-monitoring-kube-prometheus-stack
-    # - name: apps-rook-ceph-cluster
+    # - name: apps-longhorn
   path: ./kubernetes/apps/default/postgres/cloudnative-pg/db
   prune: true
   sourceRef:

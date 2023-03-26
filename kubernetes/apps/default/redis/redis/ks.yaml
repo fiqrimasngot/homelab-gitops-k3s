@@ -29,7 +29,7 @@ spec:
 # spec:
 #   dependsOn:
 #     - name: apps-default-redis-operator
-#     - name: apps-rook-ceph-cluster
+#     - name: apps-longhorn
 #   path: ./kubernetes/apps/default/redis/redis/app
 #   prune: true
 #   sourceRef:

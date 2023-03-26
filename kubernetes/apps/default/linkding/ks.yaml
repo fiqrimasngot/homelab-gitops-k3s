@@ -25,7 +25,7 @@ spec:
   dependsOn:
     - name: apps-default-linkding-db
     - name: apps-networking-traefik
-    - name: apps-rook-ceph-cluster
+    - name: apps-longhorn
     - name: apps-volsync
   path: ./kubernetes/apps/default/linkding/app
   prune: true
