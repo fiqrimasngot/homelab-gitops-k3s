@@ -11,7 +11,7 @@ main() {
 
   # assumes files requiring substitution will be named or ".yaml.tmpl"
   templates=()
-  while IFS='' read -r line; do templates+=("${line}"); done < <(fd ".yaml.tmpl$" "${PROJECT_DIR}/cluster")
+  while IFS='' read -r line; do templates+=("${line}"); done < <(fd ".yaml.tmpl$" "${PROJECT_DIR}/kubernetes")
 
   echo "Substituting: "
   for tmpl in "${templates[@]}"; do

@@ -15,7 +15,7 @@ main() {
 
   # assumes files requiring encryption will be named ".sops.yaml"
   templates=()
-  while IFS='' read -r line; do templates+=("${line}"); done < <(fd ".sops.yaml$" "${PROJECT_DIR}/cluster")
+  while IFS='' read -r line; do templates+=("${line}"); done < <(fd ".sops.yaml$" "${PROJECT_DIR}/kubernetes")
 
   echo "Encrypting: "
   for tmpl in "${templates[@]}"; do
