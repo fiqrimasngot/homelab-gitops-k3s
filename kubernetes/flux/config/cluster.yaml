@@ -7,7 +7,7 @@ metadata:
 spec:
   interval: 15m
   # ssh:// requires github-deploy-key in bootstrap
-  url: ssh://git@github.com/ahgraber/homelab-gitops-k3s
+  url: ssh://git@github.com/fiqrimasngot/homelab-gitops-k3s
   ref:
     branch: main
   secretRef:
