@@ -28,6 +28,7 @@ resources:
   - ./kubernetes-dashboard-charts.yaml
   - ./kubereboot-charts.yaml # kured
   - ./kyverno-charts.yaml
+  - ./longhorn.yaml # kube-cleanup-operator
   - ./lwolf-charts.yaml # kube-cleanup-operator
   - ./metallb-charts.yaml
   - ./metrics-server-charts.yaml
