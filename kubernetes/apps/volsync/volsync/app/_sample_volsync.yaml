@@ -31,7 +31,7 @@ spec:
     repository: <app>-restic-secret
     cacheCapacity: 2Gi
     volumeSnapshotClassName: csi-ceph-block
-    storageClassName: ceph-block
+    storageClassName: longhorn
     retain:
       daily: 10
       within: 3d

@@ -113,7 +113,7 @@ spec:
 
     persistence:
       enabled: true
-      storageClassName: "ceph-fs"
+      storageClassName: longhorn
       accessModes:
         - ReadWriteMany
       size: 2Gi
