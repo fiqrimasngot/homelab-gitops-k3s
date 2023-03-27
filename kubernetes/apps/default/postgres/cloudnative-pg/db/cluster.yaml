@@ -36,8 +36,8 @@ spec:
     #   # secret:
     #   #   name: <app>-user-secret
     ## Alternative bootstrap method: start from a backup
-    recovery:
-      source: &s3-backup postgres-v2 # next time it will be postgres-v3
+    # recovery:
+    #   source: &s3-backup postgres-v2 # next time it will be postgres-v3
 
   # externalClusters is needed when recovering from an existing cnpg cluster
   # externalClusters:
