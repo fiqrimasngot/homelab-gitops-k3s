@@ -8,9 +8,9 @@ resources:
   - ./error-pages.yaml
   - ./headers-default.yaml
   # - ./ipfilters.yaml
-  - ./ips-cloudflare.yaml
-  - ./ips-github-hooks.yaml
-  - ./ips-rfc1918.yaml
+  # - ./ips-cloudflare.yaml
+  # - ./ips-github-hooks.yaml
+  # - ./ips-rfc1918.yaml
   - ./plugins.yaml
   - ./redirects.yaml
   - ./secret-basicauth.sops.yaml
