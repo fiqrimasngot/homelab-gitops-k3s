@@ -44,7 +44,7 @@ spec:
     - name: *s3-backup
       barmanObjectStore:
         endpointURL: https://${SECRET_S3_ENDPOINT}
-        destinationPath: s3://postgres/
+        destinationPath: s3://homelab-db/
         s3Credentials:
           accessKeyId:
             name: postgres-s3-secret
