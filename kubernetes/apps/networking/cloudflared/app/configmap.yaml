@@ -37,8 +37,8 @@ data:
       service: https://traefik.networking.svc.cluster.local:443
     - hostname: miniflux.${SECRET_DOMAIN}
       service: https://traefik.networking.svc.cluster.local:443
-    # - hostname: httpbin.${SECRET_DOMAIN}
-    #   service: https://traefik.networking.svc.cluster.local:443
+    - hostname: httpbin.${SECRET_DOMAIN}
+      service: https://traefik.networking.svc.cluster.local:443
     - hostname: whoami.${SECRET_DOMAIN}
       service: https://traefik.networking.svc.cluster.local:443
     - hostname: kubernetes.${SECRET_DOMAIN}
