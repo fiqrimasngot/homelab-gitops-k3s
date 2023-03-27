@@ -5,8 +5,8 @@ metadata:
   name: apps-default-ext-postgres-operator
   namespace: flux-system
 spec:
-  dependsOn:
-    - name: apps-default-cnpg-db
+  # dependsOn:
+  #   - name: apps-default-cnpg-db
   path: ./kubernetes/apps/default/postgres/ext-postgres-operator/operator
   prune: true
   sourceRef:
