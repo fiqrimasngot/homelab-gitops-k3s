@@ -5,6 +5,6 @@ kind: Kustomization
 resources:
   # Flux-Kustomizations
   # - ./cloudnative-pg/ks.yaml
-  # - ./ext-postgres-operator/ks.yaml
+  - ./ext-postgres-operator/ks.yaml
   - ./postgresql/ks.yaml
   - ./pgadmin/ks.yaml
