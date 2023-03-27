@@ -29,12 +29,12 @@ spec:
     storageClass: local-path
 
   bootstrap:
-    # initdb:
-    #   # set up 'default' db/owner
-    #   database: default
-    #   owner: default
-    #   # secret:
-    #   #   name: <app>-user-secret
+    initdb:
+      # set up 'default' db/owner
+      database: default
+      owner: default
+      secret:
+        name: postgres-superuser-secret
     ## Alternative bootstrap method: start from a backup
     # recovery:
     #   source: &s3-backup postgres-v2 # next time it will be postgres-v3
