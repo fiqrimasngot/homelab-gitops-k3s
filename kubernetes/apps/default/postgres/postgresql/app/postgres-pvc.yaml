@@ -3,7 +3,7 @@ apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
   name: postgres-db-v1
-  namespace: dev
+  namespace: default
   labels:
 spec:
   accessModes:
