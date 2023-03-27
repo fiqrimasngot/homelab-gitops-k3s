@@ -133,15 +133,15 @@ spec:
         ## Trust forwarded  headers information (X-Forwarded-*) from following IPs/rances
         forwardedHeaders:
           # insecure: false
-          trustedIPs:
-            ## cluster ips
-            - ${NET_NODE_CIDR}
-            - ${NET_POD_CIDR}
-            - ${NET_SVC_CIDR}
-            - ${LB_GATEWAY}
-            - ${LB_INGRESS}
-            - ${LB_AUTH}
-            # ## add non-k8s proxies, svcs, etc
+          # trustedIPs:
+          #   ## cluster ips
+          #   - ${NET_NODE_CIDR}
+          #   - ${NET_POD_CIDR}
+          #   - ${NET_SVC_CIDR}
+          #   - ${LB_GATEWAY}
+          #   - ${LB_INGRESS}
+          #   - ${LB_AUTH}
+          # ## add non-k8s proxies, svcs, etc
         ## Enable the Proxy Protocol header parsing for the entry point
         # proxyProtocol:
         #   insecure: false
