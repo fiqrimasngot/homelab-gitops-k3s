@@ -1,0 +1,97 @@
+---
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
+kind: HelmRelease
+metadata:
+  name: gitlab
+  namespace: business
+spec:
+  interval: 15m
+  chart:
+    spec:
+      # renovate: registryUrl=https://charts.gitlab.io
+      chart: gitlab
+      version: 6.10.0
+      sourceRef:
+        kind: HelmRepository
+        name: gitlab-charts
+        namespace: flux-system
+      interval: 15m
+  values:
+    global:
+      edition: ce
+      hosts:
+        domain: "code.${SECRET_DOMAIN}"
+        gitlab:
+          name: "code.${SECRET_DOMAIN}"
+      ingress:
+        class: nginx
+        annotations:
+          hajimari.io/enable: "true"
+          hajimari.io/group: "business"
+          external-dns.alpha.kubernetes.io/target: "ipv4.${SECRET_DOMAIN}"
+          external-dns/is-public: "true"
+        # Wildcard is configured by default
+        configureCertmanager: false
+        # TLS is enabled by default
+        tls:
+          enabled: false
+
+      initialRootPassword:
+        secret: gitlab-initial-root-password
+        key: password
+      time_zone: ${TIMEZONE}
+      email:
+        from: "no-reply@gitlab.${SECRET_DOMAIN}"
+        display_name: GitLab
+        reply_to: ""
+        subject_suffix: ""
+        smime:
+          enabled: false
+          secretName: ""
+          keyName: "tls.key"
+          certName: "tls.crt"
+      minio:
+        enabled: true
+    gitlab:
+      gitaly:
+        persistence:
+          storageClass: longhorn
+          size: 350Gi
+    postgresql:
+      persistence:
+        storageClass: longhorn
+        size: 20Gi
+    minio:
+      persistence:
+        storageClass: longhorn
+        size: 40Gi
+    redis:
+      master:
+        persistence:
+          storageClass: longhorn
+          size: 15Gi
+    certmanager:
+      installCRDs: false
+      install: false
+      rbac:
+        create: false
+    nginx-ingress:
+      enabled: false
+    gitlab-runner:
+      runners:
+        privileged: true
+        config: |
+          [[runners]]
+            [runners.docker]
+              tls_verify = false
+              image = "docker:stable"
+              privileged = true
+              disable_cache = false
+              volumes = ["/certs/client", "/cache"]
+            [runners.kubernetes]
+              image = "ubuntu:latest"
+              privileged = true
+            [[runners.kubernetes.volumes.empty_dir]]
+              name = "docker-certs"
+              mount_path = "/certs/client"
+              medium = "Memory"
