@@ -8,4 +8,4 @@ resources:
   # Flux-Kustomizations | Apps
   - ./gitlab/ks.yaml
   - ./vaultwarden/ks.yaml
-  - ./gitlab/ks.yaml
+  - ./paperless-ngx/ks.yaml
