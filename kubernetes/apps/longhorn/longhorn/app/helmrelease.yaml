@@ -23,17 +23,14 @@ spec:
       defaultReplicaCount: 2
       defaultLonghornStaticStorageClass: longhorn
     ingress:
-      enabled: false
-      # host: "longhorn.${SECRET_DOMAIN}"
-      # path: /
-      # tls: true
-      # tlsSecret: longhorn-tls
-      # annotations:
-      #   kubernetes.io/ingress.class: "nginx"
-      #   cert-manager.io/cluster-issuer: "letsencrypt-production"
-      #   external-dns.alpha.kubernetes.io/target: "ipv4.${SECRET_DOMAIN}"
-      #   external-dns/is-public: "false"
-      #   hajimari.io/enable: "true"
-      #   hajimari.io/icon: cow
-      #   hajimari.io/group: storage
-      #   hajimari.io/appName: Longhorn
+      enabled: true
+      ingressClassName: "traefik-internal"
+      host: longhorn.${SECRET_PUBLIC}
+      path: /
+      tlsSecret: ${SECRET_PUBLIC/./-}-tls
+      tls: true
+      annotations:
+        traefik.ingress.kubernetes.io/router.entrypoints: websecure
+        # traefik.ingress.kubernetes.io/router.middlewares: "auth-chain-authelia-auth@kubernetescrd"
+        # external-dns.alpha.kubernetes.io/target: "ipv4.${SECRET_PUBLIC_DOMAIN}"
+        # external-dns/is-public: "true"

@@ -8,7 +8,7 @@ metadata:
   annotations:
     reloader.stakater.com/match: "true"
 data:
-  TIMEZONE:
+  TIMEZONE: Asia/Kuala_Lumpur
   NET_NODE_CIDR: 10.2.118.0/24
   NET_POD_CIDR: 10.42.0.0/16
   NET_SVC_CIDR: 10.43.0.0/16
