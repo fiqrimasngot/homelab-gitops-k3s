@@ -4,3 +4,4 @@ kind: Kustomization
 namespace: business
 resources:
   - ./helmrelease.yaml
+  - ./ingressroute.yaml

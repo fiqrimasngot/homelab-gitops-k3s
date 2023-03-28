@@ -13,11 +13,11 @@ spec:
     - websecure
   routes:
     - kind: Rule
-      match: Host(`traefik.${SECRET_DOMAIN}`)
-      # match: Host(`traefik.${SECRET_DOMAIN}`) && (PathPrefix(`/api`) || PathPrefix(`/dashboard`))
+      # match: Host(`traefik.${SECRET_DOMAIN}`)
+      match: Host(`traefik.${SECRET_DOMAIN}`) && (PathPrefix(`/api`) || PathPrefix(`/dashboard`))
       middlewares:
         - name: default
-        # - name: basicauth
+        - name: basicauth
       services:
         # - name: api@internal
         #   kind: TraefikService

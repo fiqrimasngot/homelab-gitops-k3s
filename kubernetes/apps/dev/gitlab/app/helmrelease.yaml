@@ -3,7 +3,7 @@ apiVersion: helm.toolkit.fluxcd.io/v2beta1
 kind: HelmRelease
 metadata:
   name: gitlab
-  namespace: business
+  namespace: dev
 spec:
   interval: 15m
   chart:
@@ -24,17 +24,11 @@ spec:
         gitlab:
           name: "code.${SECRET_DOMAIN}"
       ingress:
-        class: nginx
-        annotations:
-          hajimari.io/enable: "true"
-          hajimari.io/group: "business"
-          external-dns.alpha.kubernetes.io/target: "ipv4.${SECRET_DOMAIN}"
-          external-dns/is-public: "true"
-        # Wildcard is configured by default
         configureCertmanager: false
-        # TLS is enabled by default
+        class: traefik-internal
         tls:
-          enabled: false
+          enabled: true
+          secretName: ${SECRET_DOMAIN/./-}-tls
 
       initialRootPassword:
         secret: gitlab-initial-root-password
