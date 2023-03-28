@@ -12,7 +12,7 @@ spec:
     - websecure
   routes:
     - kind: Rule
-      match: Host(`code.${SECRET_DOMAIN}`)
+      match: Host(`vault.${SECRET_DOMAIN}`)
       middlewares:
         - name: default
         # - name: basicauth
