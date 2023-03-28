@@ -7,8 +7,8 @@ metadata:
 spec:
   chain:
     middlewares:
-      - name: basicauth
       - name: redirect-https
+      - name: basicauth
       - name: headers-default
       - name: headers-sts
       - name: plugin-cf-realip-xff
