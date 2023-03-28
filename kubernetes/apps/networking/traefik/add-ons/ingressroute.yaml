@@ -16,8 +16,8 @@ spec:
       # match: Host(`traefik.${SECRET_DOMAIN}`)
       match: Host(`traefik.${SECRET_DOMAIN}`) && (PathPrefix(`/api`) || PathPrefix(`/dashboard`))
       middlewares:
-        - name: basicauth
         - name: default
+        # - name: basicauth
       services:
         # - name: api@internal
         #   kind: TraefikService
