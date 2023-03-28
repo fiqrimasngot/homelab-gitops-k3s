@@ -68,12 +68,12 @@ spec:
         allowCrossNamespace: true
         allowExternalNameServices: true
         # ingressClass: "traefikcrd"
-        # ingressClass: traefik-internal
+        ingressClass: traefik-internal
         # labelSelector: environment=production,method=traefik
       kubernetesIngress:
         enabled: true
         # ingressClass: "traefik"
-        # ingressClass: traefik-internal
+        ingressClass: traefik-internal
         # labelSelector: environment=production,method=traefik
 
     logs:
