@@ -49,6 +49,10 @@ data:
       service: https://traefik.networking.svc.cluster.local:443
     - hostname: grafana.${SECRET_DOMAIN}
       service: https://traefik.networking.svc.cluster.local:443
+    - hostname: alertmanager.${SECRET_DOMAIN}
+      service: https://traefik.networking.svc.cluster.local:443
+    - hostname: prometheus.${SECRET_DOMAIN}
+      service: https://traefik.networking.svc.cluster.local:443
 
 
     ### Proxy traffic to the k8s Services directly
