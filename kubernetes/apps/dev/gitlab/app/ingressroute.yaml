@@ -3,7 +3,7 @@ apiVersion: traefik.containo.us/v1alpha1
 kind: IngressRoute
 metadata:
   name: &app gitlab
-  namespace: dev
+  namespace: networking
   annotations:
     kubernetes.io/ingress.class: traefik-internal
 spec:
