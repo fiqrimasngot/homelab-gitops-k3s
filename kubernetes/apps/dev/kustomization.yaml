@@ -7,3 +7,5 @@ resources:
   - ./namespace.yaml
   # Flux-Kustomizations | Apps
   - ./gitlab/ks.yaml
+  - ./vaultwarden/ks.yaml
+  - ./gitlab/ks.yaml

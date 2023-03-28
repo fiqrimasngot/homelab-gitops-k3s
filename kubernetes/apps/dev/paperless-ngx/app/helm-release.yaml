@@ -3,7 +3,7 @@ apiVersion: helm.toolkit.fluxcd.io/v2beta1
 kind: HelmRelease
 metadata:
   name: paperless-ngx
-  namespace: business
+  namespace: dev
 spec:
   interval: 5m
   chart:
@@ -49,21 +49,7 @@ spec:
             port: 8000
     ingress:
       main:
-        enabled: true
-        ingressClassName: nginx
-        annotations:
-          hajimari.io/enable: "true"
-          hajimari.io/group: "business"
-          external-dns.alpha.kubernetes.io/target: "ipv4.${SECRET_DOMAIN}"
-          external-dns/is-public: "true"
-        hosts:
-          - host: paperless.${SECRET_DOMAIN}
-            paths:
-              - path: /
-                pathType: Prefix
-        tls:
-          - hosts:
-              - paperless.${SECRET_DOMAIN}
+        enabled: false
     persistence:
       data:
         enabled: true
@@ -74,7 +60,7 @@ apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
   name: paperless-ngx-postgresql
-  namespace: business
+  namespace: dev
 spec:
   storageClassName: longhorn
   accessModes:
@@ -87,7 +73,7 @@ apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
   name: paperless-ngx-data
-  namespace: business
+  namespace: dev
 spec:
   storageClassName: longhorn
   accessModes:
@@ -100,7 +86,7 @@ apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
   name: paperless-ngx-redis
-  namespace: business
+  namespace: dev
 spec:
   storageClassName: longhorn
   accessModes:
