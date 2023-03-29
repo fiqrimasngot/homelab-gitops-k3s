@@ -22,7 +22,7 @@ spec:
       ALLOWED_HOSTS: paper.akudanlasagna.online
       COMPOSE_PROJECT_NAME: paperless-ngx
       PAPERLESS_TIME_ZONE: ${TIMEZONE}
-      PAPERLESS_URL: http://paper.akudanlasagna.online
+      PAPERLESS_URL: https://paper.akudanlasagna.online
       PAPERLESS_DBHOST: paperless-ngx-postgresql
       PAPERLESS_DBNAME: paperless-ngx
       PAPERLESS_DBUSER: paperless-ngx
