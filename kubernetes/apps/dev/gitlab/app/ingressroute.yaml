@@ -14,7 +14,7 @@ spec:
     - kind: Rule
       match: Host(`code.${SECRET_DOMAIN}`)
       middlewares:
-        - name: default
+        - name: external-default
         # - name: basicauth
       services:
         - name: gitlab-webservice-default
