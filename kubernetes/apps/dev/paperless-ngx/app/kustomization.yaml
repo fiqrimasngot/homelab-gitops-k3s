@@ -5,4 +5,4 @@ resources:
   - ./helm-release.yaml
   - ./postgresql-helm-release.yaml
   - ./redis-helm-release.yaml
-  - ./ingressroute.yaml
+  # - ./ingressroute.yaml
