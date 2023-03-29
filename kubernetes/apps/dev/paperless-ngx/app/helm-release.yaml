@@ -19,6 +19,7 @@ spec:
       repository: ghcr.io/paperless-ngx/paperless-ngx
       tag: 1.9.2
     env:
+      ALLOWED_HOSTS: paper.akudanlasagna.online
       COMPOSE_PROJECT_NAME: paperless-ngx
       PAPERLESS_TIME_ZONE: ${TIMEZONE}
       PAPERLESS_URL: http{{if ne ( len .Values.ingress.main.tls ) 0 }}s{{end}}://{{ (first .Values.ingress.main.hosts).host }}
