@@ -48,17 +48,24 @@ spec:
           http:
             port: 8000
     ingress:
-      enabled: true
-      ingressClassName: "traefik-internal"
-      host: paper.${SECRET_PUBLIC}
-      path: /
-      tlsSecret: ${SECRET_PUBLIC/./-}-tls
-      tls: true
-      annotations:
-        traefik.ingress.kubernetes.io/router.entrypoints: websecure
-        # traefik.ingress.kubernetes.io/router.middlewares: "auth-chain-authelia-auth@kubernetescrd"
-        # external-dns.alpha.kubernetes.io/target: "ipv4.${SECRET_PUBLIC_DOMAIN}"
-        # external-dns/is-public: "true"
+      main:
+        enabled: true
+        ingressClassName: "traefik-internal"
+        annotations:
+          traefik.ingress.kubernetes.io/router.entrypoints: "websecure"
+          # external-dns.alpha.kubernetes.io/target: "ipv4.${SECRET_DOMAIN}"
+          # external-dns/is-public: "true"
+          # hajimari.io/enable: "true"
+          # hajimari.io/icon: "home-automation"
+          # hajimari.io/group: "home automation"
+          # hajimari.io/appName: "Home Assistant"
+        hosts:
+          - host: &host "paper.${SECRET_DOMAIN}"
+            paths:
+              - path: /
+                pathType: Prefix
+        tls: true
+
     persistence:
       data:
         enabled: true

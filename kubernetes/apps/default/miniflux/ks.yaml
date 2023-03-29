@@ -27,6 +27,7 @@ spec:
     - name: apps-networking-traefik
     - name: apps-longhorn
     - name: apps-volsync
+    - name: apps-default-cnpg-db
   path: ./kubernetes/apps/default/miniflux/app
   prune: true
   sourceRef:
