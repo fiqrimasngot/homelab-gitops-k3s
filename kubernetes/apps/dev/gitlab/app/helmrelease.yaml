@@ -40,16 +40,16 @@ spec:
         secret: gitlab-initial-root-password
         key: password
       time_zone: ${TIMEZONE}
-      email:
-        from: "no-reply@gitlab.${SECRET_DOMAIN}"
-        display_name: GitLab
-        reply_to: ""
-        subject_suffix: ""
-        smime:
-          enabled: false
-          secretName: ""
-          keyName: "tls.key"
-          certName: "tls.crt"
+      # email:
+      #   from: "no-reply@gitlab.${SECRET_DOMAIN}"
+      #   display_name: GitLab
+      #   reply_to: ""
+      #   subject_suffix: ""
+      #   smime:
+      #     enabled: false
+      #     secretName: ""
+      #     keyName: "tls.key"
+      #     certName: "tls.crt"
       minio:
         enabled: true
     gitlab:
