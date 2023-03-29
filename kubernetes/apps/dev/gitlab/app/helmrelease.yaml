@@ -24,7 +24,11 @@ spec:
         gitlab:
           name: "code.${SECRET_DOMAIN}"
       ingress:
-        enabled: false
+        configureCertmanager: false
+        class: traefik-internal
+        tls:
+          enabled: true
+          secretName: ${SECRET_DOMAIN/./-}-tls
         # ingressClassName: "traefik-internal"
         # host: code.${SECRET_DOMAIN}
         # path: /
