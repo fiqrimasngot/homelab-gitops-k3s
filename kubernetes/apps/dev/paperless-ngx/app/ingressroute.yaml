@@ -2,7 +2,7 @@
 apiVersion: traefik.containo.us/v1alpha1
 kind: IngressRoute
 metadata:
-  name: &app paperless-ngx
+  name: paperless-ngx
   namespace: networking
   annotations:
     kubernetes.io/ingress.class: traefik-internal
