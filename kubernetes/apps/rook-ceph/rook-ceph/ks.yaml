@@ -28,7 +28,7 @@ metadata:
   namespace: flux-system
 spec:
   dependsOn:
-    - name: apps-longhorn
+    # - name: apps-longhorn
     - name: apps-kube-system-snapshot-controller
     - name: apps-networking-traefik
   path: ./kubernetes/apps/rook-ceph/rook-ceph/cluster
@@ -52,7 +52,7 @@ metadata:
   namespace: flux-system
 spec:
   dependsOn:
-    - name: apps-longhorn
+    # - name: apps-longhorn
     - name: apps-monitoring-kube-prometheus-stack
   path: ./kubernetes/apps/rook-ceph/rook-ceph/addons
   prune: true

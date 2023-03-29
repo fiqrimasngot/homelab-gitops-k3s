@@ -6,7 +6,7 @@ metadata:
   namespace: flux-system
 spec:
   # dependsOn:
-  #   - name: apps-longhorn
+  #   # - name: apps-longhorn
   path: ./kubernetes/apps/networking/crowdsec/app
   prune: true
   sourceRef:
