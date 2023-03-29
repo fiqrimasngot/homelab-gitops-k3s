@@ -16,10 +16,10 @@ spec:
         name: k8s-at-home-charts
         namespace: flux-system
       interval: 15m
-  # install:
-  #   createNamespace: true
-  #   remediation:
-  #     retries: 5
+  install:
+    createNamespace: true
+    remediation:
+      retries: 5
   upgrade:
     remediation:
       retries: 5
@@ -52,27 +52,9 @@ spec:
           websocket:
             enabled: true
             port: &websocket-port 3012
-
     ingress:
       main:
         enabled: false
-        # ingressClassName: "traefik-internal"
-        # annotations:
-        #   # kubernetes.io/tls-acme: "true"
-        #   # cert-manager.io/cluster-issuer: letsencrypt-prod
-        #   # traefik.ingress.kubernetes.io/router.entrypoints: "websecure"
-        #   # traefik.ingress.kubernetes.io/router.middlewares: "network-rfc1918@kubernetescrd"
-        #   # hajimari.io/enable: "true"
-        #   # hajimari.io/icon: file-outline
-        # hosts:
-        #   - host: vault.${SECRET_DOMAIN}
-        #     paths:
-        #       - path: /
-        #         pathType: Prefix
-        # tls:
-        #   - hosts:
-        #       - "vault.${SECRET_DOMAIN}"
-        #     secretName: ${SECRET_DOMAIN/./-}-tls
 
     persistence:
       config:

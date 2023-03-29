@@ -24,17 +24,17 @@ spec:
         gitlab:
           name: "code.${SECRET_DOMAIN}"
       ingress:
-        enabled: true
-        ingressClassName: "traefik-internal"
-        host: code.${SECRET_PUBLIC}
-        path: /
-        tlsSecret: ${SECRET_PUBLIC/./-}-tls
-        tls: true
-        annotations:
-          traefik.ingress.kubernetes.io/router.entrypoints: websecure
-          # traefik.ingress.kubernetes.io/router.middlewares: "auth-chain-authelia-auth@kubernetescrd"
-          # external-dns.alpha.kubernetes.io/target: "ipv4.${SECRET_PUBLIC_DOMAIN}"
-          # external-dns/is-public: "true"
+        enabled: false
+        # ingressClassName: "traefik-internal"
+        # host: code.${SECRET_PUBLIC}
+        # path: /
+        # tlsSecret: ${SECRET_PUBLIC/./-}-tls
+        # tls: true
+        # annotations:
+        #   traefik.ingress.kubernetes.io/router.entrypoints: websecure
+        #   # traefik.ingress.kubernetes.io/router.middlewares: "auth-chain-authelia-auth@kubernetescrd"
+        #   # external-dns.alpha.kubernetes.io/target: "ipv4.${SECRET_PUBLIC_DOMAIN}"
+        #   # external-dns/is-public: "true"
 
       initialRootPassword:
         secret: gitlab-initial-root-password
