@@ -4,6 +4,8 @@ kind: IngressRoute
 metadata:
   name: gitops
   namespace: networking
+  annotations:
+    kubernetes.io/ingress.class: traefik-internal
 spec:
   entryPoints:
     # - web
@@ -12,7 +14,7 @@ spec:
     - kind: Rule
       match: Host(`gitops.${SECRET_DOMAIN}`)
       middlewares:
-        - name: default
+        - name: external-default
         # - name: basicauth
       services:
         - name: weave-gitops

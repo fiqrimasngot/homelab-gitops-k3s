@@ -4,6 +4,8 @@ kind: IngressRoute
 metadata:
   name: &app miniflux
   namespace: networking
+  annotations:
+    kubernetes.io/ingress.class: traefik-internal
 spec:
   entryPoints:
     # - web
@@ -13,7 +15,7 @@ spec:
       # - match: Host(`recipes.${SECRET_DOMAIN}`)
       kind: Rule
       middlewares:
-        - name: default
+        - name: external-default
         # - name: basicauth
       services:
         - name: *app

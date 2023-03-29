@@ -4,9 +4,11 @@ kind: IngressRoute
 metadata:
   name: echo
   namespace: networking
+  annotations:
+    kubernetes.io/ingress.class: traefik-internal
 spec:
   entryPoints:
-    - web
+    # - web
     - websecure
   routes:
     - kind: Rule

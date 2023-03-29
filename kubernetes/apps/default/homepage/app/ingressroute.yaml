@@ -4,6 +4,8 @@ kind: IngressRoute
 metadata:
   name: &app homepage
   namespace: networking
+  annotations:
+    kubernetes.io/ingress.class: traefik-internal
 spec:
   entryPoints:
     # - web
