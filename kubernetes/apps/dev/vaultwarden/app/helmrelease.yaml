@@ -53,7 +53,8 @@ spec:
             enabled: true
             port: &websocket-port 3012
     ingress:
-      enabled: true
+      main:
+        enabled: true
       ingressClassName: "traefik-internal"
       host: vault.${SECRET_PUBLIC}
       path: /
