@@ -1,0 +1,16 @@
+---
+apiVersion: traefik.containo.us/v1alpha1
+kind: Middleware
+metadata:
+  name: external-default
+  namespace: networking
+spec:
+  chain:
+    middlewares:
+      # - name: basicauth
+      - name: redirect-https
+      - name: headers-default
+      - name: headers-sts
+      - name: plugin-cf-realip-xff
+      - name: crowdsec-traefik-bouncer
+      - name: error-pages

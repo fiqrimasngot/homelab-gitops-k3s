@@ -14,7 +14,7 @@ spec:
     - kind: Rule
       match: Host(`paper.${SECRET_DOMAIN}`)
       middlewares:
-        - name: default
+        - name: external-default
         # - name: basicauth
       services:
         - name: paperless-ngx
