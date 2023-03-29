@@ -6,15 +6,16 @@ resources:
   # Pre Flux-Kustomizations
   - ./namespace.yaml
   # Flux-Kustomizations | Databases
-  # - ./postgres/
+  - ./postgres/
   - ./redis/
   # Flux-Kustomizations | Apps
   - ./changedetection/ks.yaml
   - ./cyberchef/ks.yaml
 
   # - ./homebox/ks.yaml
-  # - ./homepage/ks.yaml
-  # - ./letsblockit/ks.yaml
-  # - ./linkding/ks.yaml
-  # - ./mealie/ks.yaml
-  # - ./miniflux/ks.yaml
+
+  - ./homepage/ks.yaml
+  - ./letsblockit/ks.yaml
+  - ./linkding/ks.yaml
+  - ./mealie/ks.yaml
+  - ./miniflux/ks.yaml
