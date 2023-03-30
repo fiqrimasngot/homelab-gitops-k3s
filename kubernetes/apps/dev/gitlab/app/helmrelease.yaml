@@ -21,20 +21,23 @@ spec:
       edition: ce
       hosts:
         domain: "code.${SECRET_DOMAIN}"
+        gitlab:
+          name: "code.${SECRET_PUBLIC_DOMAIN}"
+
       ingress:
         # Don't configure certmanager, since we aren't installing it.
         configureCertmanager: false
         annotations:
           # This annotation causes Traefik to create a corresponding frontend for each ingress.
           "kubernetes.io/ingress.class": "traefik-internal"
+        tls:
+          enabled: true
+          secretName: ${SECRET_DOMAIN/./-}-tls
 
       # ingress:
       #   enabled: true
       #   configureCertmanager: false
       #   class: traefik
-      #   # tls:
-      #   #   enabled: true
-      #   #   secretName: ${SECRET_DOMAIN/./-}-tls
       #   tls:
       #     enabled: false
 
