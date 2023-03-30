@@ -14,6 +14,7 @@ resources:
 
   # - ./homebox/ks.yaml
 
+  # - ./home-assistant/ks.yaml
   - ./homepage/ks.yaml
   - ./letsblockit/ks.yaml
   - ./linkding/ks.yaml

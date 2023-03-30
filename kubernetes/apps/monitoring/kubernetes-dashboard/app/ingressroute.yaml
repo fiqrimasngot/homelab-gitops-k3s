@@ -14,7 +14,7 @@ spec:
     - kind: Rule
       match: Host(`kubernetes.${SECRET_DOMAIN}`)
       middlewares:
-        - name: default
+        - name: external-default
         # - name: basicauth
       services:
         - name: *app
