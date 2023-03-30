@@ -20,7 +20,7 @@ spec:
     global:
       edition: ce
       hosts:
-        domain: "code.${SECRET_DOMAIN}"
+        domain: "${SECRET_DOMAIN}"
         gitlab:
           name: "code.${SECRET_DOMAIN}"
 
