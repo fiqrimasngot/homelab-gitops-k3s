@@ -23,7 +23,7 @@ spec:
         domain: "code.${SECRET_DOMAIN}"
       ingress:
         configureCertmanager: false
-        class: traefik
+        class: traefik-internal
         tls:
           enabled: true
           secretName: ${SECRET_DOMAIN/./-}-tls
