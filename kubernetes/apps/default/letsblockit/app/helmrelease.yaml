@@ -31,7 +31,7 @@ spec:
       repository: ghcr.io/letsblockit/server
       tag: v0.32.1
     env:
-      TZ: America/New_York
+      TZ: ${TIMEZONE}
       LETSBLOCKIT_AUTH_METHOD: proxy
       LETSBLOCKIT_AUTH_PROXY_HEADER_NAME: X-Forwarded-User
       LETSBLOCKIT_DATABASE_URL:

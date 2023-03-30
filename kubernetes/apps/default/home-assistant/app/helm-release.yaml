@@ -5,9 +5,6 @@ metadata:
   name: home-assistant
   namespace: default
 spec:
-  dependsOn:
-    - name: longhorn
-      namespace: longhorn-system
   interval: 15m
   chart:
     spec:
@@ -41,19 +38,7 @@ spec:
             port: 8123
     ingress:
       main:
-        enabled: true
-        ingressClassName: "traefik"
-        annotations:
-          hajimari.io/enable: "true"
-          hajimari.io/icon: "home-assistant"
-          traefik.ingress.kubernetes.io/router.entrypoints: websecure
-          external-dns.alpha.kubernetes.io/target: "ipv4.${SECRET_PUBLIC_DOMAIN}"
-          external-dns/is-public: "true"
-        hosts:
-          - host: home-assistant.${SECRET_PUBLIC_DOMAIN}
-            paths:
-              - path: /
-                pathType: Prefix
+        enabled: false
     persistence:
       config:
         enabled: true
