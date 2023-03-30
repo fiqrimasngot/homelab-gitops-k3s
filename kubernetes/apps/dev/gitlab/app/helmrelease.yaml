@@ -25,11 +25,13 @@ spec:
           name: "code.${SECRET_DOMAIN}"
 
       ingress:
+        enabled: true
+        class: traefik-internal
         # Don't configure certmanager, since we aren't installing it.
         configureCertmanager: false
-        annotations:
-          # This annotation causes Traefik to create a corresponding frontend for each ingress.
-          "kubernetes.io/ingress.class": "traefik-internal"
+        # annotations:
+        #   # This annotation causes Traefik to create a corresponding frontend for each ingress.
+        #   "kubernetes.io/ingress.class": "traefik-internal"
         tls:
           enabled: true
           secretName: ${SECRET_DOMAIN/./-}-tls
