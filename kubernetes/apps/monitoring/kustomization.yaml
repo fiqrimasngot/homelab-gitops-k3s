@@ -15,4 +15,5 @@ resources:
   - ./nut-exporter/ks.yaml
   - ./node-problem-detector/ks.yaml
   - ./scrutiny/ks.yaml
+  - ./uotime-kuma/ks.yaml
   - ./speedtest-exporter/ks.yaml
