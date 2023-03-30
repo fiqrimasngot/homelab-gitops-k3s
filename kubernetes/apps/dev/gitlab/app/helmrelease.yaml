@@ -23,16 +23,13 @@ spec:
         domain: "code.${SECRET_DOMAIN}"
       ingress:
         configureCertmanager: false
-        # class: traefik-internal
+        class: traefik-internal
         # tls:
         #   enabled: true
         #   secretName: ${SECRET_DOMAIN/./-}-tls
 
-        ingressClassName: "traefik-internal"
-        host: code.${SECRET_DOMAIN}
-        path: /
-        tlsSecret: ${SECRET_DOMAIN/./-}-tls
-        tls: true
+        tls:
+          enabled: false
         annotations:
           traefik.ingress.kubernetes.io/router.entrypoints: websecure
           traefik.ingress.kubernetes.io/router.middlewares: "networking-external-default@kubernetescrd"
