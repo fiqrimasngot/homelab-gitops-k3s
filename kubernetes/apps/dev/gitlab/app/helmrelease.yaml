@@ -22,7 +22,7 @@ spec:
       hosts:
         domain: "code.${SECRET_DOMAIN}"
         gitlab:
-          name: "code.${SECRET_PUBLIC_DOMAIN}"
+          name: "code.${SECRET_DOMAIN}"
 
       ingress:
         # Don't configure certmanager, since we aren't installing it.
