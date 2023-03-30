@@ -4,7 +4,3 @@ kind: Kustomization
 resources:
   - ./helm-release.yaml
   - ./secret.sops.yaml
-labels:
-  - pairs:
-      app.kubernetes.io/name: postgresql
-      app.kubernetes.io/instance: postgresql

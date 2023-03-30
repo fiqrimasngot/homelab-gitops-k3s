@@ -32,14 +32,9 @@ spec:
     remediation:
       retries: 3
   values:
-    domain: "${SECRET_PUBLIC_DOMAIN}"
+    domain: "${SECRET_DOMAIN}"
     ingress:
-      enabled: true
-      ingressClassName: "traefik"
-      annotations:
-        traefik.ingress.kubernetes.io/router.entrypoints: websecure
-        external-dns.alpha.kubernetes.io/target: "ipv4.${SECRET_PUBLIC_DOMAIN}"
-        external-dns/is-public: "true"
+      enabled: false
       subdomain: auth
       traefikCRD:
         enabled: true
@@ -59,7 +54,7 @@ spec:
         level: info
       theme: dark
       totp:
-        issuer: "${SECRET_PUBLIC_DOMAIN}"
+        issuer: "${SECRET_DOMAIN}"
       authentication_backend:
         ldap:
           enabled: true
@@ -77,9 +72,9 @@ spec:
         # networks:
         #   - name: all
         #     networks:
-        #     - "*.${SECRET_PUBLIC_DOMAIN}"
+        #     - "*.${SECRET_DOMAIN}"
       session:
-        name: "${SECRET_PUBLIC_DOMAIN}_auth_session"
+        name: "${SECRET_DOMAIN}_auth_session"
         redis:
           enabled: true
           enabledSecret: true
@@ -99,10 +94,10 @@ spec:
           enabledSecret: true
           host: "${SECRET_SMTP_HOST}"
           port: 465
-          identifier: "${SECRET_PUBLIC_DOMAIN}"
+          identifier: "${SECRET_DOMAIN}"
           username: "${SECRET_ADMIN_EMAIL}"
           sender: "${SECRET_NOTIFICATION_EMAIL}"
-          subject: "[${SECRET_PUBLIC_DOMAIN} auth] {title}"
+          subject: "[${SECRET_DOMAIN} auth] {title}"
           startup_check_address: "${SECRET_TEST_EMAIL}"
     secret:
       existingSecret: authelia-secrets

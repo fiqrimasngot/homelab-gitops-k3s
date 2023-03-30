@@ -5,7 +5,3 @@ resources:
   - ./helm-release.yaml
   - ./secret.sops.yaml
   - ./phpldapadmin-ingressroute.yaml
-labels:
-  - pairs:
-      app.kubernetes.io/name: openldap
-      app.kubernetes.io/instance: openldap
