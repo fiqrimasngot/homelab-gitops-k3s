@@ -18,11 +18,9 @@ spec:
       interval: 15m
   values:
     global:
-      edition: ce
+      # edition: ce
       hosts:
         domain: "code.${SECRET_DOMAIN}"
-        gitlab:
-          name: "code.${SECRET_DOMAIN}"
       ingress:
         configureCertmanager: false
         class: traefik-internal
