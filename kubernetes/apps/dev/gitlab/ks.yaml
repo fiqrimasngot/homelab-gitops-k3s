@@ -5,9 +5,6 @@ metadata:
   name: apps-dev-gitlab
   namespace: flux-system
 spec:
-  dependsOn:
-    - name: apps-networking-traefik
-    - name: apps-volsync
   path: ./kubernetes/apps/dev/gitlab/app
   prune: true
   sourceRef:
