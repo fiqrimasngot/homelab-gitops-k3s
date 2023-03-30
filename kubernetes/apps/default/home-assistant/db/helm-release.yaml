@@ -5,9 +5,9 @@ metadata:
   name: home-assistant-db
   namespace: default
 spec:
-  dependsOn:
-    - name: longhorn
-      namespace: longhorn-system
+  # dependsOn:
+  #   - name: longhorn
+  #     namespace: longhorn-system
   interval: 5m
   chart:
     spec:
