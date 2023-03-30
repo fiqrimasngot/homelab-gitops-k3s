@@ -13,4 +13,4 @@ spec:
       - name: headers-sts
       - name: plugin-cf-realip-xff
       - name: crowdsec-traefik-bouncer
-      - name: error-pages
+      # - name: error-pages
