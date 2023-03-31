@@ -22,11 +22,11 @@ spec:
         annotations:
           traefik.ingress.kubernetes.io/redirect-entry-point: websecure
         tls:
-          enabled: true
-          secretName: ${SECRET_DOMAIN/./-}-tls
+          enabled: false
+          # secretName: ${SECRET_DOMAIN/./-}-tls
         hosts:
           domain: gitlab.${SECRET_DOMAIN}
-          tls: true
+          tls: false
       nodeSelector:
         beta.kubernetes.io/arch: amd64
       edition: ce
