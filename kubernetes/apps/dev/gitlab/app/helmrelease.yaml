@@ -1,144 +1,43 @@
 ---
-apiVersion: helm.toolkit.fluxcd.io/v2beta1
+apiVersion: source.toolkit.fluxcd.io/v1beta1
 kind: HelmRelease
 metadata:
   name: gitlab
   namespace: dev
 spec:
-  interval: 5m
+  releaseName: gitlab
   chart:
-    spec:
-      chart: gitlab
-      version: 6.10.0
-      sourceRef:
-        kind: HelmRepository
-        name: gitlab-charts
-        namespace: flux-system
-      interval: 5m
+    repository: https://charts.gitlab.io/
+    name: gitlab-omnibus
+    version: 14.4.1
   values:
     global:
-      hosts:
-        domain: ${SECRET_DOMAIN}
       ingress:
         configureCertmanager: false
-        enabled: true
-        annotations:
-          traefik.ingress.kubernetes.io/frontend-entry-points: web,websecure
-          traefik.ingress.kubernetes.io/force-host-headers: true
-
-      nodeSelector:
-        beta.kubernetes.io/arch: amd64
-      edition: ce
-      kas:
-        enabled: false
-      pages:
-        enabled: true
-      email:
-        display_name: "GitLab"
-        from: "gitlab@${SECRET_DOMAIN}"
-        reply_to: "noreply@${SECRET_DOMAIN}"
-      smtp:
-        enabled: true
-        address: "mailserver.mailserver"
-        port: 25
-        tls: false
-        authentication: ""
-      appConfig:
-        omniauth:
-          enabled: false
-          # autoSignInWithProvider: []
-          # syncProfileFromProvider: [openid_connect]
-          # allowSingleSignOn: [openid_connect]
-          # allowBypassTwoFactor: [openid_connect]
-          # syncProfileAttributes: [email]
-          # blockAutoCreatedUsers: false
-          # providers:
-          #   - secret: authelia-oauth2
-    # Reduce memory usage
+      hosts:
+        domain: ${SECRET_DOMAIN}
     gitlab:
-      gitaly:
-        resources:
-          requests:
-            cpu: 80m
-            memory: 340M
-          limits:
-            cpu: 1800m
-      webservice:
-        minReplicas: 1
-        maxReplicas: 1
-        # https://gitlab.com/gitlab-org/charts/gitlab/-/blob/master/examples/ref/2k.yaml
-        workerProcesses: 1
-        resources:
-          limits:
-            memory: 1.5Gi # roughly, 1.5GB/worker
-          requests:
-            cpu: "0.9" # requests.cpu <= workerProcesses
-            memory: 1.25Gi # roughly, 1.25GB/worker
-      sidekiq:
-        minReplicas: 1
-        maxReplicas: 1
-      gitlab-shell:
-        minReplicas: 1
-        maxReplicas: 1
-      gitlab-pages:
-        # The default requests are massive for a static server
-        resources:
-          requests:
-            cpu: 10m
-            memory: 10Mi
-    # Disable things we handle by ourselves
-    certmanager:
-      install: false
-    nginx-ingress:
-      enabled: false
-    prometheus:
-      install: false
-    grafana:
-      enabled: false
-    gitlab-runner:
-      runners:
-        nodeSelector:
-          beta.kubernetes.io/arch: amd64
-        config: |
-          concurrent = 20
-          [[runners]]
-            [runners.kubernetes]
-              cpu_request = "500m"
-              cpu_limit = "1"
-              memory_request = "200Mi"
-              memory_limit = "1Gi"
-              service_cpu_request = "100m"
-              service_cpu_limit = "1"
-              service_memory_request = "50Mi"
-              service_memory_limit = "1Gi"
-              helper_cpu_request = "5m"
-              helper_cpu_limit = "500m"
-              helper_memory_request = "50Mi"
-              helper_memory_limit = "200Mi"
-  postRenderers:
-    - kustomize:
-        patches:
-          - patch: |-
-              apiVersion: apps/v1
-              kind: Deployment
-              metadata:
-                name: dummy-app
-              spec:
-                template:
-                  spec:
-                    nodeSelector:
-                      beta.kubernetes.io/arch: amd64
-            target:
-              kind: Deployment
-          - patch: |-
-              apiVersion: apps/v1
-              kind: StatefulSet
-              metadata:
-                name: dummy-app
-              spec:
-                template:
-                  spec:
-                    nodeSelector:
-                      beta.kubernetes.io/arch: amd64
-            target:
-              kind: StatefulSet
+      certmanager:
+        install: false
+      ingress:
+        annotations:
+          traefik.ingress.kubernetes.io/redirect-entry-point: websecure
+        tls:
+          enabled: true
+          secretName: ${SECRET_DOMAIN}
+        hosts:
+          domain: gitlab.${SECRET_DOMAIN}
+          tls: true
+      initialRootPassword: changeme
+      omnibusConfig:
+        gitlab_rails:
+          gitlab_email_enabled: true
+          gitlab_email_from: gitlab@${SECRET_DOMAIN}
+          smtp_enable: false
+          # smtp_address: smtp.gmail.com
+          # smtp_port: "587"
+          # smtp_user_name: gitlab@${SECRET_DOMAIN}
+          # smtp_password: ${{GITLAB_SMTP_PASSWORD}}
+          # smtp_authentication: plain
+          # smtp_domain: smtp.gmail.com
+          # smtp_enable_starttls_auto: true
