@@ -17,17 +17,16 @@ spec:
       interval: 5m
   values:
     global:
-      certmanager:
-        install: false
+      certmanager: false
       ingress:
         annotations:
           traefik.ingress.kubernetes.io/redirect-entry-point: websecure
         tls:
-          enabled: false
-          # secretName: ${SECRET_DOMAIN/./-}-tls
+          enabled: true
+          secretName: ${SECRET_DOMAIN/./-}-tls
         hosts:
           domain: gitlab.${SECRET_DOMAIN}
-          # tls: false
+          tls: true
       nodeSelector:
         beta.kubernetes.io/arch: amd64
       edition: ce
