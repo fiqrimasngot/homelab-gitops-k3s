@@ -6,6 +6,6 @@ resources:
   # Pre Flux-Kustomizations
   - ./namespace.yaml
   # Flux-Kustomizations | Apps
-  # - ./gitlab/ks.yaml
+  - ./gitlab/ks.yaml
   - ./vaultwarden/ks.yaml
   - ./paperless-ngx/ks.yaml

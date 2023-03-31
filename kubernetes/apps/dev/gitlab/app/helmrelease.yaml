@@ -17,20 +17,20 @@ spec:
       interval: 5m
   values:
     global:
-      nodeSelector:
-        beta.kubernetes.io/arch: amd64
-      edition: ce
       hosts:
         domain: ${SECRET_DOMAIN}
       ingress:
-        class: traefik-internal
-        annotations:
-          nginx.ingress.kubernetes.io/enable-global-auth: "false"
-        # Wildcard is configured by default
         configureCertmanager: false
-        # TLS is enabled by default
         tls:
           enabled: false
+        annotations:
+          traefik.ingress.kubernetes.io/frontend-entry-points: web,websecure
+          traefik.ingress.kubernetes.io/redirect-entry-point: websecure
+          traefik.ingress.kubernetes.io/redirect-permanent: "true"
+
+      nodeSelector:
+        beta.kubernetes.io/arch: amd64
+      edition: ce
       kas:
         enabled: false
       pages:
@@ -58,6 +58,22 @@ spec:
           #   - secret: authelia-oauth2
     # Reduce memory usage
     gitlab:
+      ingress:
+        annotations:
+          traefik.ingress.kubernetes.io/ssl-redirect: "true"
+          traefik.ingress.kubernetes.io/proxy-body-size: 100m
+          traefik.ingress.kubernetes.io/proxy-connect-timeout: "30"
+          traefik.ingress.kubernetes.io/proxy-read-timeout: "180"
+          traefik.ingress.kubernetes.io/proxy-send-timeout: "180"
+        hosts:
+          gitlab.akudanlasagna.online:
+            paths:
+              - path: /
+                pathType: Prefix
+                backend:
+                  serviceName: gitlab-gitlab
+                  servicePort: http
+
       gitaly:
         resources:
           requests:
