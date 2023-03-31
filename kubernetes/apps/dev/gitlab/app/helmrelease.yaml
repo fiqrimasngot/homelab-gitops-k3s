@@ -19,14 +19,15 @@ spec:
     global:
       certmanager: false
       ingress:
+        configureCertmanager: false
         annotations:
           traefik.ingress.kubernetes.io/redirect-entry-point: websecure
         tls:
-          enabled: false
-          # secretName: ${SECRET_DOMAIN/./-}-tls
+          enabled: true
+          secretName: ${SECRET_DOMAIN/./-}-tls
         hosts:
           domain: gitlab.${SECRET_DOMAIN}
-          tls: false
+          tls: true
       nodeSelector:
         beta.kubernetes.io/arch: amd64
       edition: ce
@@ -39,7 +40,7 @@ spec:
         from: "gitlab@${SECRET_DOMAIN}"
         reply_to: "noreply@${SECRET_DOMAIN}"
       smtp:
-        enabled: false
+        enabled: falsex
         address: "mailserver.mailserver"
         port: 25
         tls: false
