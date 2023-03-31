@@ -21,12 +21,10 @@ spec:
         domain: ${SECRET_DOMAIN}
       ingress:
         configureCertmanager: false
-        enabled: false
-        # annotations:
-        #   traefik.ingress.kubernetes.io/router.entrypoints: websecure
-        #   traefik.ingress.kubernetes.io/router.tls: true
-        #   traefik.ingress.kubernetes.io/router.tls.certresolver: "letsencrypt-production"
-        #   traefik.ingress.kubernetes.io/router.middlewares: "networking-external-default@kubernetescrd"
+        enabled: true
+        annotations:
+          traefik.ingress.kubernetes.io/frontend-entry-points: web,websecure
+          traefik.ingress.kubernetes.io/force-host-headers: true
 
       nodeSelector:
         beta.kubernetes.io/arch: amd64
