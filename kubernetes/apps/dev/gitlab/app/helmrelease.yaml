@@ -9,7 +9,7 @@ spec:
   chart:
     spec:
       chart: gitlab
-      version: 6.9.3
+      version: 6.10.0
       sourceRef:
         kind: HelmRepository
         name: gitlab-charts
@@ -21,12 +21,12 @@ spec:
         domain: ${SECRET_DOMAIN}
       ingress:
         configureCertmanager: false
-        enabled: true
-        annotations:
-          traefik.ingress.kubernetes.io/router.entrypoints: websecure
-          traefik.ingress.kubernetes.io/router.tls: true
-          traefik.ingress.kubernetes.io/router.tls.certresolver: "letsencrypt-production"
-          traefik.ingress.kubernetes.io/router.middlewares: "networking-external-default@kubernetescrd"
+        enabled: false
+        # annotations:
+        #   traefik.ingress.kubernetes.io/router.entrypoints: websecure
+        #   traefik.ingress.kubernetes.io/router.tls: true
+        #   traefik.ingress.kubernetes.io/router.tls.certresolver: "letsencrypt-production"
+        #   traefik.ingress.kubernetes.io/router.middlewares: "networking-external-default@kubernetescrd"
 
       nodeSelector:
         beta.kubernetes.io/arch: amd64
@@ -58,22 +58,6 @@ spec:
           #   - secret: authelia-oauth2
     # Reduce memory usage
     gitlab:
-      ingress:
-        annotations:
-          traefik.ingress.kubernetes.io/ssl-redirect: "true"
-          traefik.ingress.kubernetes.io/proxy-body-size: 100m
-          traefik.ingress.kubernetes.io/proxy-connect-timeout: "30"
-          traefik.ingress.kubernetes.io/proxy-read-timeout: "180"
-          traefik.ingress.kubernetes.io/proxy-send-timeout: "180"
-        hosts:
-          gitlab.akudanlasagna.online:
-            paths:
-              - path: /
-                pathType: Prefix
-                backend:
-                  serviceName: gitlab-gitlab
-                  servicePort: http
-
       gitaly:
         resources:
           requests:
