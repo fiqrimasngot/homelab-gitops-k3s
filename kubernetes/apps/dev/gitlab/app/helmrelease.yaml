@@ -25,16 +25,16 @@ spec:
           name: "gitlab.${SECRET_DOMAIN}"
 
       ingress:
-        enabled: true
-        class: traefik-internal
+        enabled: false
         # Don't configure certmanager, since we aren't installing it.
-        configureCertmanager: false
         # annotations:
         #   # This annotation causes Traefik to create a corresponding frontend for each ingress.
         #   "kubernetes.io/ingress.class": "traefik-internal"
-        tls:
-          enabled: true
-          secretName: ${SECRET_DOMAIN/./-}-tls
+        # class: traefik-internal
+        configureCertmanager: false
+        # tls:
+        #   enabled: true
+        #   secretName: ${SECRET_DOMAIN/./-}-tls
 
       # ingress:
       #   enabled: true
@@ -48,7 +48,7 @@ spec:
         key: password
       time_zone: ${TIMEZONE}
       email:
-        from: "no-reply@code.${SECRET_DOMAIN}"
+        from: "no-reply@gitlab.${SECRET_DOMAIN}"
         display_name: GitLab
         reply_to: ""
         subject_suffix: ""
