@@ -20,13 +20,15 @@ spec:
       hosts:
         domain: ${SECRET_DOMAIN}
       ingress:
-        configureCertmanager: false
-        tls:
-          enabled: false
+        enabled: true
         annotations:
-          traefik.ingress.kubernetes.io/frontend-entry-points: web,websecure
-          traefik.ingress.kubernetes.io/redirect-entry-point: websecure
-          traefik.ingress.kubernetes.io/redirect-permanent: "true"
+          traefik.ingress.kubernetes.io/router.entrypoints: http,https
+          traefik.ingress.kubernetes.io/router.tls: "true"
+          traefik.ingress.kubernetes.io/router.tls.certresolver: "letsencrypt-production"
+        tls:
+          - secretName: ${SECRET_DOMAIN/./-}-tls
+            hosts:
+              - gitlab.akudanlasagna.online
 
       nodeSelector:
         beta.kubernetes.io/arch: amd64
