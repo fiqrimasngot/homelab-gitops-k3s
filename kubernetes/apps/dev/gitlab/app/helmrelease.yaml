@@ -20,6 +20,7 @@ spec:
       hosts:
         domain: ${SECRET_DOMAIN}
       ingress:
+        configureCertmanager: false
         enabled: true
         annotations:
           traefik.ingress.kubernetes.io/router.entrypoints: websecure
