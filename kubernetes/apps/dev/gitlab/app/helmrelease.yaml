@@ -24,7 +24,7 @@ spec:
           traefik.ingress.kubernetes.io/redirect-entry-point: websecure
         tls:
           enabled: false
-          secretName: ${SECRET_DOMAIN/./-}-tls
+          # secretName: ${SECRET_DOMAIN/./-}-tls
         hosts:
           domain: gitlab.${SECRET_DOMAIN}
           # tls: false
