@@ -39,7 +39,7 @@ spec:
         from: "gitlab@${SECRET_DOMAIN}"
         reply_to: "noreply@${SECRET_DOMAIN}"
       smtp:
-        enabled: true
+        enabled: false
         address: "mailserver.mailserver"
         port: 25
         tls: false
