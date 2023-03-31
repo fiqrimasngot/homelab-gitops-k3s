@@ -22,7 +22,7 @@ spec:
       hosts:
         domain: "${SECRET_DOMAIN}"
         gitlab:
-          name: "code.${SECRET_DOMAIN}"
+          name: "gitlab.${SECRET_DOMAIN}"
 
       ingress:
         enabled: true

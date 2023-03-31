@@ -12,7 +12,7 @@ spec:
     - websecure
   routes:
     - kind: Rule
-      match: Host(`code.${SECRET_DOMAIN}`)
+      match: Host(`gitlab.${SECRET_DOMAIN}`)
       middlewares:
         - name: external-default
         # - name: basicauth
