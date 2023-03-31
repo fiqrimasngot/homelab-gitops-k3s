@@ -5,7 +5,7 @@ metadata:
   name: gitlab
   namespace: dev
 spec:
-  interval: 1h
+  interval: 5m
   chart:
     spec:
       chart: gitlab
@@ -14,7 +14,7 @@ spec:
         kind: HelmRepository
         name: gitlab
         namespace: flux-system
-      interval: 1h
+      interval: 5m
   values:
     global:
       nodeSelector:
